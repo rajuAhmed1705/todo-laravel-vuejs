@@ -15,8 +15,12 @@ class TaskController extends Controller
     public function index()
     {
         $task = Task::all();
+        // dd(count($task));
+        if (count($task) == 0) {
+            return response('no content',204);
+        }
 
-        return $task->toJson();
+        return response($task,200);
     }
 
     /**
@@ -37,11 +41,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Task;
-        $task->title = $request->title;
-        $task->isComplete = $request->isComplete;
-        $task->save();
-        return $task->toJson();
+        $validatedData = $request->validate([
+            'title' => 'required|max:500|string',
+            'isComplete' => 'boolean',
+        ]);
+
+        $task = Task::create($validatedData);
+
+        return response($task,201);
     }
 
     /**
@@ -52,7 +59,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return $task->toJson();
+        return response($task,200);
     }
 
     /**
@@ -75,9 +82,14 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->update($request->all());
+        $validatedData = $request->validate([
+            'title' => 'required|max:500|string',
+            'isComplete' => 'boolean',
+        ]);
 
-        return $task;
+        $task->update($validatedData);
+
+        return response($task,200);
     }
 
     /**
@@ -89,6 +101,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return $task;
+        return response($task,200);
+
     }
 }
