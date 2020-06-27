@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <img src="./assets/logo.png" />
+    <b-container>
+      <b-row class="justify-content-md-center">
+        <todo />
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import todo from "./components/todo";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    todo
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
