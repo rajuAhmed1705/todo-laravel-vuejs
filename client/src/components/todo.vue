@@ -14,16 +14,17 @@
       <b-list-group-item
         class="d-flex justify-content-between align-items-center"
       >
-        <b-form-checkbox
-          v-model="todo.isComplete"
-          @change="completed(todo)"
-          :checked="todo.isComplete"
-        ></b-form-checkbox>
         <div
           v-if="!todo.editing"
           @dblclick="editToto(todo)"
           :class="{ completed: todo.isComplete }"
         >
+          <b-form-checkbox
+            v-model="todo.isComplete"
+            @change="completed(todo)"
+            :checked="todo.isComplete"
+            class="float-left"
+          ></b-form-checkbox>
           {{ todo.title }}
         </div>
         <b-form-input
