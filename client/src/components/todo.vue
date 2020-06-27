@@ -198,7 +198,7 @@ export default {
             .then(response => {
               if (response.status == 200) {
                 this.todos = this.todos.filter(
-                  todo => todo.id == response.data.id
+                  todo => todo.id != response.data.id
                 );
               }
             })
