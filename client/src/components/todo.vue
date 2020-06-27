@@ -44,7 +44,10 @@
         >
       </b-list-group-item>
     </b-list-group>
-    <div class="d-flex justify-content-between align-items-center">
+    <div
+      v-if="showButton"
+      class="d-flex justify-content-between align-items-center mt-3"
+    >
       <div>{{ remaining }} item(s) left</div>
       <div>
         <b-button
@@ -125,6 +128,9 @@ export default {
     },
     showClearCompletedButton() {
       return this.todos.filter(todo => todo.isComplete).length > 0;
+    },
+    showButton() {
+      return this.todos.length > 0;
     }
   },
   directives: {

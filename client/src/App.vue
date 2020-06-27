@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" />
+    <h1 class="heading-text">todos</h1>
     <b-container>
       <b-row class="justify-content-md-center">
-        <todo />
+        <todo class="todo" />
       </b-row>
     </b-container>
   </div>
@@ -28,5 +28,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.heading-text {
+  font-size: 60px;
+  font-weight: 600;
+}
+.todo {
+  width: 50%;
 }
 </style>
